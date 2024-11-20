@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>Signup and Login</title>
+</head>
+
+<body class="bg-black text-white" style="font-family: Audiowide;">
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <!-- Header starts -->
+        <div class="relative flex items-center justify-center w-full">
+            <div class="flex items-center justify-center md:justify-between max-w-7xl w-full px-2 h-16 text-gray-200">
+                <a href="../index.html"
+                    class="text-xl font-medium rounded border-b-2 border-lime-900 px-2 shadow-xl shadow-lime-900 text-lime-600 animate-bounce">Brick
+                    Breaker</a>
+                <div class="hidden md:flex items-center justify-between space-x-4 ">
+                    <a href="../index.html"
+                        class="px-2 py-1 rounded hover:scale-[110%] duration-500 border-b-2 border-yellow-900 shadow-yellow-900 shadow-xl">Home</a>
+                    <a href="how-to-play.html"
+                        class="px-2 py-1 rounded hover:scale-[110%] duration-500 border-b-2 border-red-900 shadow-red-900 shadow-xl">How
+                        to play</a>
+                    <a href="about-us.html"
+                        class="px-2 py-1 rounded hover:scale-[110%] duration-500 border-b-2 border-green-900 shadow-green-900 shadow-xl">About
+                        Us</a>
+                    <a id="loginBtn" href="login.html"
+                        class="px-2 py-1 rounded hover:scale-[110%] duration-500 border-b-2 border-blue-900 shadow-blue-900 shadow-xl">Login</a>
+                    <a id="logoutBtn" href="login.html"
+                        class="hidden px-2 py-1 rounded hover:scale-[110%] duration-500 border-b-2 border-blue-900 shadow-blue-900 shadow-xl">Logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- Header ends -->
+
+        <div id="content" class="relative flex items-center justify-center w-full py-12 text-gray-200 min-h-[600px]">
+            <div class="flex-col">
+                <div id="logininstructions"
+                    class="text-sm my-4 text-left text-gray-100 hidden p-4 my-8 bg-black bg-opacity-40 rounded-xl">
+                    <div class="text-lg text-center">Login Instructions</div>
+                    <div class="list-disc">
+                        <li>Enter your username and password to play</li>
+                        <li>If you don't have any account click on SignUp</li>
+                        <li>Username and password field can't be empty</li>
+                    </div>
+                </div>
+                <div id="signupinstructions"
+                    class="text-sm my-4 text-left text-gray-100 hidden p-4 my-8 bg-black bg-opacity-40 rounded-xl">
+                    <div class="text-lg text-center">Signup Instructions</div>
+                    <div class="list-disc">
+                        <li>Username and password must be 4 char long</li>
+                        <li>Username must be unique</li>
+                        <li>Passwords must match</li>
+                    </div>
+                </div>
+                <div id="loginWelcome" class="text-lg my-4 text-center text-gray-100 hidden">Signup Successful! You can
+                    log in now</div>
+                <div id="navi" class="flex items-center justify-center">
+                    <a href="#" onclick="showLogin()"
+                        class="border-cyan-600 border-t-2 border-l-2 px-2 py-1 rounded-tl-xl text-lg text-cyan-600">Login</a>
+                    <a href="#" onclick="showSignup()"
+                        class="border-red-700 border-t-2 border-r-2 px-2 py-1 rounded-tr-xl text-lg text-red-700">Signup</a>
+                </div>
+                <div class="flex">
+                    <!-- login form  starts-->
+                    <div id="login" class="">
+                        <div id="loginForm"
+                            class="flex-col bg-black bg-opacity-40  space-y-8 px-20 py-10 rounded-xl shadow-xl shadow-cyan-600 border-2 border-cyan-600 h-80">
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-cyan-600" name="person-outline"></ion-icon>
+                                <input type="text" id="loginUsername" placeholder="Username" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-cyan-600 focus:outline-none text-cyan-600 placeholder:text-cyan-600 ">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-cyan-600" name="key-outline"></ion-icon>
+                                <input type="password" id="loginPassword" placeholder="Password" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-cyan-600 focus:outline-none text-cyan-600 placeholder:text-cyan-600">
+                            </div>
+                            <div id="warnLogin" class="text-xs text-red-700"></div>
+                            <div>
+                                <button type="button" onclick="login()"
+                                    class="border-cyan-600 border px-2 py-1 rounded w-full text-cyan-600 hover:shadow-xl hover:shadow-cyan-600 font-medium duration-500">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- login form ends -->
+                    <!-- signup form starts -->
+                    <div id="signup" class="hidden">
+                        <form id="signupForm"
+                            class="flex-col bg-black bg-opacity-40  space-y-6 px-20 py-10 h-80 rounded-xl shadow-xl shadow-red-600 border-2 border-red-600">
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-red-600" name="person-outline"></ion-icon>
+                                <input type="text" id="signupUsername" placeholder="Username" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-red-700 focus:outline-none text-gray-200 text-red-700 placeholder:text-red-700">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-red-600" name="mail-outline"></ion-icon>
+                                <input type="text" id="signupEmail" placeholder="E-mail" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-red-700 focus:outline-none text-gray-200 text-red-700 placeholder:text-red-700">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-red-600" name="key-outline"></ion-icon>
+                                <input type="password" id="signupPassword" placeholder="Password" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-red-700 focus:outline-none text-gray-200 text-red-700 placeholder:text-red-700">
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <ion-icon class="text-xl text-red-600" name="key-outline"></ion-icon>
+                                <input type="password" id="confirmPassword" placeholder="Confirm Password" required
+                                    class="px-2 bg-black bg-opacity-10 border-b border-red-700 focus:outline-none text-gray-200 text-red-700 placeholder:text-red-700">
+                            </div>
+                            <div id="warnSignUp" class="text-xs text-yellow-600"></div>
+                            <div><button type="button" onclick="signup()"
+                                    class="border-red-700 border px-2 py-1 rounded w-full text-red-700 hover:shadow-xl hover:shadow-red-700 font-medium duration-500">Signup</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- signup form ends -->
+                </div>
+                
+            </div>
+            <!-- gaming window starts -->
+            <div id="gameInterface" class="flex-col space-y-16 max-w-7xl w-1/2 hidden">
+                <div class="flex items-center justify-between">
+                    <div id="userWelcome" class="font-bold text-2xl text-center"></div>
+                    <div id="score" class="font-bold text-lg text-center"></div>
+                </div>
+                <div class="flex items-center justify-center lg:flex-row flex-col">
+                    <div class="flex items-centerw-[20%] justify-center">
+                        <div class="flex lg:flex-col text-sm ">
+                            <button id="playBtn" onclick="showGameFrame()"
+                                class="border border-red-700 bg-black bg-opacity-40 text-red-700 duration-500 hover:text-gray-200 hover:font-bold h-10 w-20 lg:h-20 flex items-center justify-center hover:bg-red-700 cursor-pointer rounded-tl-2xl px-2">
+                                <div><ion-icon class="text-2xl" name="play-outline"></ion-icon></div>
+                                <div class="lg:block hidden">Play</div>
+                            </button>
+                            <button id="helpBtn" onclick="showHelp()"
+                                class="border border-red-700 bg-black bg-opacity-40 text-red-700 duration-500 hover:text-gray-200 hover:font-bold h-10 w-20 lg:h-20 flex items-center justify-center hover:bg-red-700 cursor-pointer px-2">
+                                <div><ion-icon class="text-2xl" name="help-outline"></ion-icon></div>
+                                <div class="lg:block hidden">Help</div>
+                            </button>
+                            <button id="leaderboardBtn" onclick="showLeaderboard()"
+                                class="flex-col border border-red-700 bg-black bg-opacity-40 text-red-700 duration-500 hover:text-gray-200 hover:font-bold text-center h-10 w-20 lg:h-20 flex items-center justify-center hover:bg-red-700 cursor-pointer rounded-tr-2xl lg:rounded-tr-none lg:rounded-bl-2xl px-2">
+                                <div><ion-icon class="text-2xl" name="newspaper-outline"></ion-icon></div>
+                                <div class="lg:block hidden">Leader</div>
+                                <div class="lg:block hidden">Board</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-black bg-opacity-40 border border-red-600 w-[80%] h-[500px] rounded-lg shadow-xl shadow-red-800 overflow-hidden flex items-center justify-center">
+                        <!-- game section starts here    -->
+                        <div id="gameFrame" class="hidden w-full h-full">
+                            <div id="playButton" class="flex items-center justify-center h-full">
+                                <div id="startGame" onclick="gameStart()"
+                                    class="text-xl text-gray-300 rounded-xl px-8 py-4 hover:scale-105 duration-500 hover:shadow-xl hover:shadow-green-700 cursor-pointer hover:bg-green-700 bg-red-700">
+                                    Start</div>
+                            </div>
+                            <div id="gameOver" class="hidden items-start justify-center h-full">
+                                <div class="w-full text-center">
+                                    <div class="text-3xl font-medium my-6">Game Over</div>
+                                    <div id="displayPosition" class="my-2 text-center font-bold text-3xl"></div>
+                                    <div id="displayUsername" class="text-center text-xl"></div>
+                                    <div id="displayScore" class="text-center text-xl"></div>
+                                    <div id="startGame" onclick="restart()"
+                                        class="my-16 text-center text-xl text-gray-300 px-6 py-4 hover:scale-105 duration-500 cursor-pointer hover:bg-green-700 bg-red-700">
+                                        Play Again</div>
+                                </div>
+                            </div>
+                            <canvas id="gameCanvas" tabindex="0" class="hidden h-full w-full"></canvas>
+                        </div>
+                        <script src="../scripts/game.js"></script>
+                        <!-- game section ends here    -->
+                        <!-- Help section starts -->
+                        <div id="showHelp"
+                            class="hidden m-6 h-full w-full text-md text-gray-300 text-center px-6 flex-col">
+                            <div class="text-xl font-bold text-red-700 my-6 ">How to play?</div>
+                            <ul class="list-disc text-start lg:px-16">
+                                <li>Use mouse to move paddle</li>
+                                <li>Save ball from falling</li>
+                                <li>Smash bricks to increase points</li>
+                            </ul>
+                        </div>
+                        <!-- Help section ends -->
+                        <!-- leaderboard section starts  -->
+                        <div id="showLeaderboard" class="hidden text-xl m-6 h-full w-full">
+                            <table id="leaderboard" class="w-full my-4 text-gray-300">
+                                <tr class="border-b border-red-700">
+                                    <th class="text-center text-red-700">S.No.</th>
+                                    <th class="text-center text-red-700">Username</th>
+                                    <th class="text-center text-red-700">Score</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <!-- leaderboard section ends  -->
+                    </div>
+                </div>
+            </div>
+            <!-- gaming window ends  -->
+        </div>
+        <!-- Footer starts -->
+        <footer class="flex items-center justify-center relative">
+            <div class="flex md:flex-row flex-col items-center justify-between w-full max-w-7xl">
+                <div class="flex space-x-4">
+                    <a href="contact-us.html"
+                        class="px-2 py-1 border-b-2 border-red-900 rounded hover:scale-[110%] duration-500 shadow-red-900 shadow-xl">Contact
+                        Us</a>
+                    <a href="copyright.html"
+                        class="px-2 py-1  rounded hover:scale-[110%] duration-500 border-b-2 border-fuchsia-900 shadow-fuchsia-900 shadow-xl">Copyright</a>
+                </div>
+                <p class="text-sm italic shadow-xl shadow-lime-900">Designed by Dristi Bhugun</p>
+
+            </div>
+        </footer>
+    </div>
+    <!-- Footer ends  -->
+    <script src="../scripts/script.js"></script>
+</body>
+
+</html>
